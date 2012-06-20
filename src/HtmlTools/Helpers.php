@@ -19,21 +19,12 @@ class Helpers
         $document = new \DOMDocument();
         $document->loadHTML($html);
         $xpath = new \DOMXPath($document);
-        $ids = array();
 
         // Search heading tags
         foreach ($xpath->query(CssSelector::toXPath($headingSelector)) as $node) {
             // If they don't have an id, find an unique one
             if (!$node->hasAttribute('id')) {
-                $baseId = $id = Inflector::urlize($node->textContent);
-                $i  = 1;
-                while (in_array($id, $ids)) {
-                    $id = $baseId . '-' . ($i++);
-                }
-                $ids[] = $id;
-                $node->setAttribute('id', $id);
-            } else {
-                $ids[] = $node->getAttribute('id');
+                $node->setAttribute('id', Inflector::urlize($node->textContent) . '-' . uniqid());
             }
         }
 
