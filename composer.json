@@ -1,0 +1,11 @@
+{
+    "name": "yohang/htmltools",
+    "descriptions": "Some helpers to work with HTML",
+    "autoload": {
+        "psr-0": { "HtmlTools": "src/" }
+    },
+    "require": {
+        "php": ">5.3.3",
+        "symfony/css-selector": ">=2.0,<2.3"
+    }
+}

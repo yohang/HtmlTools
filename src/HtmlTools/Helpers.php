@@ -16,6 +16,9 @@ class Helpers
      */
     public static function addHeadingsId($html, $headingSelector = 'h1, h2, h3, h4, h5, h6')
     {
+        if (!$html) {
+            return '';
+        }
         $document = new \DOMDocument();
         $document->loadHTML($html);
         $xpath = new \DOMXPath($document);
