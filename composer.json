@@ -1,6 +1,7 @@
 {
     "name": "yohang/htmltools",
     "description": "Some helpers to work with HTML",
+    "license": "MIT",
     "autoload": {
         "psr-0": { "HtmlTools": "src/" }
     },
