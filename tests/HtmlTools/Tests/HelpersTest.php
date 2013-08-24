@@ -16,7 +16,7 @@ class HelpersTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddHeadingsId($data, $pattern)
     {
-        $this->assertSame(1, preg_match($pattern, Helpers::addHeadingsId($data)));
+        $this->assertRegExp($pattern, Helpers::addHeadingsId($data));
     }
 
     public function headingDataProvider()
