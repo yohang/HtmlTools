@@ -24,10 +24,18 @@ class Helpers
         $xpath = new \DOMXPath($document);
 
         // Search heading tags
+        $ids = array();
         foreach ($xpath->query(CssSelector::toXPath($headingSelector)) as $node) {
             // If they don't have an id, find an unique one
             if (!$node->hasAttribute('id')) {
-                $node->setAttribute('id', Inflector::urlize($node->textContent) . '-' . uniqid());
+                $id = Inflector::urlize($node->textContent);
+                if (array_key_exists($id, $ids)) {
+                    $ids[$id] += 1;
+                    $id .= '-'.$ids[$id];
+                } else {
+                    $ids[$id] = 1;
+                }
+                $node->setAttribute('id', $id);
             }
         }
 

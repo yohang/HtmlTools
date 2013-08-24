@@ -14,19 +14,20 @@ class HelpersTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider headingDataProvider
      */
-    public function testAddHeadingsId($data, $pattern)
+    public function testAddHeadingsId($expected, $string)
     {
-        $this->assertRegExp($pattern, Helpers::addHeadingsId($data));
+        $this->assertSame($expected, Helpers::addHeadingsId($string));
     }
 
     public function headingDataProvider()
     {
         return array(
-            array('<h1>Test</h1>', '#^<h1 id="test-[0-9a-f]+">Test</h1>$#'),
-            array('<h1>Test</h1><h2 class="foo">bar</h2> ', '#^<h1 id="test-[0-9a-f]+">Test</h1><h2 class="foo" id="bar-[0-9a-f]+">bar</h2>$#'),
-            array('', '#^$#'),
-            array('<p>test', '#^<p>test</p>$#'),
-            array('<ul><li>foo<li>bar</ul>', '#^<ul><li>foo</li><li>bar</li></ul>$#')
+            array('<h1 id="test">Test</h1>', '<h1>Test</h1>'),
+            array('<h1 id="test">Test</h1><h2 class="foo" id="bar">bar</h2>', '<h1>Test</h1><h2 class="foo">bar</h2>'),
+            array('<h1 id="test">Test</h1><h1 id="test-2">Test</h1><h1 id="test-3">Test</h1>', '<h1>Test</h1><h1>Test</h1><h1>Test</h1>'),
+            array('', ''),
+            array('<p>test</p>', '<p>test</p>'),
+            array('<ul><li>foo</li><li>bar</li></ul>', '<ul><li>foo<li>bar</ul>'),
         );
     }
 }
