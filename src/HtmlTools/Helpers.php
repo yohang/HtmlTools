@@ -20,7 +20,7 @@ class Helpers
             return '';
         }
         $document = new \DOMDocument();
-        $document->loadHTML($html);
+        $document->loadHTML('<?xml encoding="UTF-8">'.$html);
         $xpath = new \DOMXPath($document);
 
         // Search heading tags
