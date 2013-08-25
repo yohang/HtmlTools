@@ -12,7 +12,7 @@ class HelpersTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider headingDataProvider
      */
-    public function testAddHeadingsId($expected, $string)
+    public function testAddHeadingsIdWithoutLink($expected, $string)
     {
         $this->assertSame($expected, Helpers::addHeadingsId($string));
     }
@@ -29,6 +29,21 @@ class HelpersTest extends \PHPUnit_Framework_TestCase
             array('<p>test</p>', '<p>test</p>'),
             array('<ul><li>foo</li><li>bar</li></ul>', '<ul><li>foo<li>bar</ul>'),
         );
+    }
+
+    public function testAddHeadingsIdWithLink()
+    {
+        $document = <<<EOL
+<h1>Test</h1>
+<h2 class="foo">bar</h2>
+<h3 id="custom">Test</h3>
+EOL;
+        $expected = <<<EOL
+<h1 id="test">Test<a href="#test" class="anchor">#</a></h1>
+<h2 class="foo" id="bar">bar<a href="#bar" class="anchor">#</a></h2>
+<h3 id="custom">Test<a href="#custom" class="anchor">#</a></h3>
+EOL;
+        $this->assertSame($expected, Helpers::addHeadingsId($document, 'h1, h2, h3, h4, h5, h6', true));
     }
 
     public function testBuildTOC()

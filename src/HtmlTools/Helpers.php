@@ -14,7 +14,7 @@ class Helpers
      * @param string $headingSelector CSS selector
      * @return mixed modified
      */
-    public static function addHeadingsId($html, $headingSelector = 'h1, h2, h3, h4, h5, h6')
+    public static function addHeadingsId($html, $headingSelector = 'h1, h2, h3, h4, h5, h6', $addLink = false)
     {
         if (!$html) {
             return '';
@@ -36,6 +36,12 @@ class Helpers
                     $ids[$id] = 1;
                 }
                 $node->setAttribute('id', $id);
+            }
+            if ($addLink) {
+                $link = $document->createElement('a', '#');
+                $link->setAttribute('href', '#'.$node->getAttribute('id'));
+                $link->setAttribute('class', 'anchor');
+                $node->appendChild($link);
             }
         }
 
