@@ -76,32 +76,32 @@ class Helpers
             $id = $node->getAttribute('id');
             switch ($nodeName) {
                 case 'h1':
-                    $toc[++$h1] = array('title' => $title, 'id' => $id, 'childs' => array());
+                    $toc[++$h1] = array('title' => $title, 'id' => $id, 'children' => array());
                 break;
 
                 case 'h2':
                     $toc = self::fixToc($toc, $nodeName, $h1, $h2, $h3, $h4, $h5, $h5);
-                    $toc[$h1]['childs'][++$h2] = array('title' => $title, 'id' => $id, 'childs' => array());
+                    $toc[$h1]['children'][++$h2] = array('title' => $title, 'id' => $id, 'children' => array());
                 break;
 
                 case 'h3':
                     $toc = self::fixToc($toc, $nodeName, $h1, $h2, $h3, $h4, $h5, $h5);
-                    $toc[$h1]['childs'][$h2]['childs'][++$h3] = array('title' => $title, 'id' => $id, 'childs' => array());
+                    $toc[$h1]['children'][$h2]['children'][++$h3] = array('title' => $title, 'id' => $id, 'children' => array());
                 break;
 
                 case 'h4':
                     $toc = self::fixToc($toc, $nodeName, $h1, $h2, $h3, $h4, $h5, $h5);
-                    $toc[$h1]['childs'][$h2]['childs'][$h3]['childs'][++$h4] = array('title' => $title, 'id' => $id, 'childs' => array());
+                    $toc[$h1]['children'][$h2]['children'][$h3]['children'][++$h4] = array('title' => $title, 'id' => $id, 'children' => array());
                 break;
 
                 case 'h5':
                     $toc = self::fixToc($toc, $nodeName, $h1, $h2, $h3, $h4, $h5, $h5);
-                    $toc[$h1]['childs'][$h2]['childs'][$h3]['childs'][$h4]['childs'][++$h5] = array('title' => $title, 'id' => $id, 'childs' => array());
+                    $toc[$h1]['children'][$h2]['children'][$h3]['children'][$h4]['children'][++$h5] = array('title' => $title, 'id' => $id, 'children' => array());
                 break;
 
                 case 'h6':
                     $toc = self::fixToc($toc, $nodeName, $h1, $h2, $h3, $h4, $h5, $h5);
-                    $toc[$h1]['childs'][$h2]['childs'][$h3]['childs'][$h4]['childs'][$h5]['childs'][++$h6] = array('title' => $title, 'id' => $id, 'childs' => array());
+                    $toc[$h1]['children'][$h2]['children'][$h3]['children'][$h4]['children'][$h5]['children'][++$h6] = array('title' => $title, 'id' => $id, 'children' => array());
                 break;
             }
         }
@@ -112,35 +112,35 @@ class Helpers
     private static function fixToc($toc, $level, $h1, $h2, $h3, $h4, $h5)
     {
         if (!isset($toc[$h1])) {
-            $toc[$h1] = array('title' => null, 'id' => null, 'childs' => array());
+            $toc[$h1] = array('title' => null, 'id' => null, 'children' => array());
         }
         if ('h2' == $level) {
             return $toc;
         }
 
-        if (!isset($toc[$h1]['childs'][$h2])) {
-            $toc[$h1]['childs'][$h2] = array('title' => null, 'id' => null, 'childs' => array());
+        if (!isset($toc[$h1]['children'][$h2])) {
+            $toc[$h1]['children'][$h2] = array('title' => null, 'id' => null, 'children' => array());
         }
         if ('h3' == $level) {
             return $toc;
         }
 
-        if (!isset($toc[$h1]['childs'][$h2]['childs'][$h3])) {
-            $toc[$h1]['childs'][$h2]['childs'][$h3] = array('title' => null, 'id' => null, 'childs' => array());
+        if (!isset($toc[$h1]['children'][$h2]['children'][$h3])) {
+            $toc[$h1]['children'][$h2]['children'][$h3] = array('title' => null, 'id' => null, 'children' => array());
         }
         if ('h4' == $level) {
             return $toc;
         }
 
-        if (!isset($toc[$h1]['childs'][$h2]['childs'][$h3]['childs'][$h4])) {
-            $toc[$h1]['childs'][$h2]['childs'][$h3]['childs'][$h4] = array('title' => null, 'id' => null, 'childs' => array());
+        if (!isset($toc[$h1]['children'][$h2]['children'][$h3]['children'][$h4])) {
+            $toc[$h1]['children'][$h2]['children'][$h3]['children'][$h4] = array('title' => null, 'id' => null, 'children' => array());
         }
         if ('h5' == $level) {
             return $toc;
         }
 
-        if (!isset($toc[$h1]['childs'][$h2]['childs'][$h3]['childs'][$h4]['childs'][$h5])) {
-            $toc[$h1]['childs'][$h2]['childs'][$h3]['childs'][$h4]['childs'][$h5] = array('title' => null, 'id' => null, 'childs' => array());
+        if (!isset($toc[$h1]['children'][$h2]['children'][$h3]['children'][$h4]['children'][$h5])) {
+            $toc[$h1]['children'][$h2]['children'][$h3]['children'][$h4]['children'][$h5] = array('title' => null, 'id' => null, 'children' => array());
         }
 
         return $toc;

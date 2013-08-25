@@ -63,37 +63,37 @@ EOL;
             1 => array(
                 'title' => '1.0.0.0.0.0',
                 'id' => '1-0-0-0-0-0',
-                'childs' => array(
+                'children' => array(
                     1 => array(
                         'title' => '1.1.0.0.0.0',
                         'id' => '1-1-0-0-0-0',
-                        'childs' => array(),
+                        'children' => array(),
                     ),
                     2 => array(
                         'title' => '1.2.0.0.0.0',
                         'id' => '1-2-0-0-0-0',
-                        'childs' => array(
+                        'children' => array(
                             1 => array(
                                 'title' => '1.2.1.0.0.0',
                                 'id' => '1-2-1-0-0-0',
-                                'childs' => array(),
+                                'children' => array(),
                             ),
                             2 => array(
                                 'title' => '1.2.2.0.0.0',
                                 'id' => '1-2-2-0-0-0',
-                                'childs' => array(
+                                'children' => array(
                                     1 => array(
                                         'title' => '1.2.2.1.0.0',
                                         'id' => '1-2-2-1-0-0',
-                                        'childs' => array(
+                                        'children' => array(
                                             1 => array(
                                                 'title' => '1.2.2.1.1.0',
                                                 'id' => '1-2-2-1-1-0',
-                                                'childs' => array(
+                                                'children' => array(
                                                     1 => array(
                                                         'title' => '1.2.2.1.1.1',
                                                         'id' => '1-2-2-1-1-1',
-                                                        'childs' => array(),
+                                                        'children' => array(),
                                                     ),
                                                 ),
                                             ),
@@ -108,7 +108,7 @@ EOL;
             2 => array(
                 'title' => 'Another Title',
                 'id' => 'another-title',
-                'childs' => array(
+                'children' => array(
                 )
             ),
         );
@@ -129,38 +129,38 @@ EOL;
                 // H1 supposed to be here
                 'title' => null,
                 'id' => null,
-                'childs' => array(
+                'children' => array(
                     1 => array(
                         'title' => 'h2',
                         'id' => 'h2',
-                        'childs' => array(
+                        'children' => array(
                             1 => array(
                                 'title' => 'h3',
                                 'id' => 'h3',
-                                'childs' => array(),
+                                'children' => array(),
                             ),
                         ),
                     ),
                     2 => array(
                         'title' => 'h2',
                         'id' => 'h2-2',
-                        'childs' => array(
+                        'children' => array(
                             1 => array(
                                 // H2 supposed to be here
                                 'title' => null,
                                 'id' => null,
-                                'childs' => array(
+                                'children' => array(
                                     1 => array(
                                         'title' => 'h4',
                                         'id' => 'h4',
-                                        'childs' => array(),
+                                        'children' => array(),
                                     ),
                                 ),
                             ),
                             2 => array(
                                 'title' => 'h3',
                                 'id' => 'h3-2',
-                                'childs' => array(),
+                                'children' => array(),
                             ),
                         ),
                     ),
