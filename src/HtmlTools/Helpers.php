@@ -3,6 +3,7 @@
 namespace HtmlTools;
 
 use Symfony\Component\CssSelector\CssSelector;
+use Symfony\Component\CssSelector\CssSelectorConverter;
 
 class Helpers
 {
@@ -25,7 +26,7 @@ class Helpers
 
         // Search heading tags
         $ids = array();
-        foreach ($xpath->query(CssSelector::toXPath($headingSelector)) as $node) {
+        foreach ($xpath->query(self::cssToXPath($headingSelector)) as $node) {
             // If they don't have an id, find an unique one
             if (!$node->hasAttribute('id')) {
                 $id = Inflector::urlize($node->textContent);
@@ -70,7 +71,7 @@ class Helpers
 
         $toc = array();
         $h1 = $h2 = $h3 = $h4 = $h5 = $h5 = $h6 = 0;
-        foreach ($xpath->query(CssSelector::toXPath('h1, h2, h3, h4, h5, h6')) as $node) {
+        foreach ($xpath->query(self::cssToXPath('h1, h2, h3, h4, h5, h6')) as $node) {
             $nodeName = $node->nodeName;
             $title = $node->nodeValue;
             $id = $node->getAttribute('id');
@@ -145,4 +146,19 @@ class Helpers
 
         return $toc;
     }
+
+    /**
+     * @param string $css
+     *
+     * @return string
+     */
+    private static function cssToXPath($css)
+    {
+        if (class_exists('Symfony\Component\CssSelector\CssSelector')) {
+            return CssSelector::toXPath($css);
+        }
+
+        return (new CssSelectorConverter)->toXPath($css);
+    }
 }
+
