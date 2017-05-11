@@ -6,8 +6,8 @@
         "psr-0": { "HtmlTools": "src/" }
     },
     "require": {
-        "php": ">5.3.3",
-        "symfony/css-selector": "~2.0"
+        "php": "^5.3.3 || ^7.0",
+        "symfony/css-selector": "^2.0 || ^3.0"
     },
     "extra": {
         "branch-alias":  {
@@ -15,3 +15,4 @@
         }
     }
 }
+
